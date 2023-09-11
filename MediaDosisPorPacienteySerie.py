@@ -53,7 +53,7 @@ def calculate_average_ctdi_vol(directory_path):
         print(f"Media de CTDIvol para paciente {patient_id} del equipo Somatom Go Top: {patient_average}")
 
 if __name__ == "__main__":
-    directory_path = "C:/Users/Adrià López/Desktop/Somatom.Go.Top_Descomprimit/Anonims"
+    directory_path = "Ruta/de/la/carpeta/con/imagenes/DICOM"
     calculate_average_ctdi_vol(directory_path)
 
 
