@@ -5,5 +5,5 @@ Este codigo és el que he empleado para realizar mi proyecto correctamente. Requ
 
 Aparte de estos, he añadido un fichero llamado DosisImagenesDICOM que te aporta los valores de CTDIvol de cada una de las imágenes. Fue la primera que cree para obtener valores, y fue a partir de la qual obtuve las bases para crear los demás scripts. Como no se pueden extraer conclusiones de ella, no la he comentado en la memoria del trabajo, pero si queréis obtener el valor de esa variable de cada una de las imagenes DICOM para comprovar que efectivamente coinciden esos valores, utilizar el programa de esta carpeta.
 
-Para utilizar este codigo, se requerirá de tener las imagenes en formato DICOM en carpetas, en el manual de usuario entro más en detalle.
+Para utilizar este codigo, se requerirá tener las imagenes en formato DICOM en carpetas, en el manual de usuario entro más en detalle.
 
