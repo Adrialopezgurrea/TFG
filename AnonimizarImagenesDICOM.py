@@ -1,35 +1,35 @@
 import pydicom
 import os
 
-def anonimitzar_imatge_dicom(ruta_imatge, ruta_desti):
-    # Llegir l'arxiu DICOM
-    dataset = pydicom.dcmread(ruta_imatge)
+def anonimizar_imagen_dicom(ruta_imagen, ruta_destino):
+    # Leer el arxivo DICOM
+    dataset = pydicom.dcmread(ruta_imagen)
     
-    # Anonimizar els atributs del pacient
+    # Anonimizar los atributos del paciente
     dataset.PatientID = ""
     dataset.PatientName = ""
     dataset.PatientBirthDate = ""
     dataset.PatientSex = ""
     
-    # Guardar l'arxiu DICOM anonimizat en la ruta de destí
-    dataset.save_as(ruta_desti)
+    # Guardar el arxivo DICOM anonimizado en la ruta de destno
+    dataset.save_as(ruta_destino)
     
-    # Mostrar missatge d'èxit
-    print("Imatge anonimitzada guardada amb èxit: " + ruta_desti)
+    # Mostrar mensaje de exito
+    print("Imagen anonimizada guardada con exito: " + ruta_destino)
 
-directori_imatges = "C:/Users/Adrià López/Downloads/SR0000/SR0000"
-directori_desti = "C:/Users/Adrià López/Desktop/Imatges anonimitzades/"
+directorio_imagenes = "Ruta/Carpeta/Imagenes/Sin/Anonimizar" 
+directorio_destino = "Ruta/Carpeta/Imagenes/Anonimizadas"
 
 # Recorrer los archivos en el directorio de imágenes
-for arxiu in os.listdir(directori_imatges):
+for archivo in os.listdir(directorio_imagenes):
     # Comprobar que el archivo tenga la extensión DICOM (.dcm)
-    if arxiu.endswith(".dcm"):
+    if archivo.endswith(".dcm"):
         # Obtener la ruta completa del archivo de imagen
-        ruta_imatge = os.path.join(directori_imatges, arxiu)
+        ruta_imagen = os.path.join(directorio_imagenes, archivo)
         
         # Crear la ruta de destino para el archivo anonimizado
-        nom_arxiu_anon = os.path.splitext(arxiu)[0] + "_anon.dcm"
-        ruta_desti = os.path.join(directori_desti, nom_arxiu_anon)
+        nombre_arxivo_anon = os.path.splitext(archivo)[0] + "_anon.dcm"
+        ruta_destino = os.path.join(directorio_destino, nombre_arxivo_anon)
         
         # Llamar a la función para anonimizar la imagen DICOM y guardarla en la ruta de destino
-        anonimitzar_imatge_dicom(ruta_imatge, ruta_desti)
+        anonimizar_imagen_dicom(ruta_imagen, ruta_destino)
