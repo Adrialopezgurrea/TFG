@@ -29,7 +29,7 @@ def calculate_statistics(directory_path):
     return ctdi_vol_values
 
 if __name__ == "__main__":
-    directory_path = "C:/Users/Adrià López/Downloads/SR0000/SR0000"  # Ruta del directorio que contiene las imágenes DICOM
+    directory_path = "Ruta/de/la/carpeta/con/imagenes/DICOM"  # Ruta del directorio que contiene las imágenes DICOM
     ctdi_vol_values = calculate_statistics(directory_path)  # Calcula los valores de CTDIvol
     
     
