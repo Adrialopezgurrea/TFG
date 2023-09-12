@@ -26,5 +26,5 @@ def explore_directory(directory_path):
 
 if __name__ == "__main__":
     # Ruta del directorio que contiene las imágenes DICOM
-    directory_path = "C:/Users/Adrià López/Desktop/TC_PhilipsDescomprimit"
+    directory_path = "Ruta/Carpeta/Imagenes/DICOM"
     explore_directory(directory_path)  # Llama a la función para explorar el directorio y procesar los archivos DICOM
