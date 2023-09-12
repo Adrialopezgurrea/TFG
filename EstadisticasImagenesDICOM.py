@@ -44,7 +44,7 @@ if __name__ == "__main__":
         coef_var_ctdi_vol = (std_ctdi_vol / mean_ctdi_vol) * 100  # Calcula el coeficiente de variación
        
     
-        print(f"Estadísticas de la maquina Somatom Go Top:")
+        print(f"Estadísticas de la maquina "Nombre_Equipo":")
         print(f"Media de CTDIvol: {mean_ctdi_vol}")
         print(f"Desviación estándar de CTDIvol: {std_ctdi_vol}")
         print(f"Rango de CTDIvol: {data_range}")
@@ -61,7 +61,7 @@ if __name__ == "__main__":
         matplotlib.pyplot.hist(ctdi_vol_values, bins=20, edgecolor='black')
         matplotlib.pyplot.xlabel('CTDIvol (mGy)')
         matplotlib.pyplot.ylabel('Frecuencia')
-        matplotlib.pyplot.title('Histograma de CTDIvol de la maquina Somatom Go Top')
+        matplotlib.pyplot.title('Histograma de CTDIvol de la maquina "Nombre_Equipo"')
         matplotlib.pyplot.show()
     else:
         print("No se encontraron imágenes DICOM con la variable CTDIvol.")
