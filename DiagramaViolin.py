@@ -1,32 +1,37 @@
-import os
-import pydicom
-import matplotlib.pyplot as plt
-import seaborn 
+# Importación de las bibliotecas necesarias
+import os                    # Para trabajar con archivos y directorios
+import pydicom               # Para leer archivos DICOM
+import matplotlib.pyplot as plt  # Para trazar gráficos
+import seaborn              # Para trazar un gráfico de violín
 
 # Función para obtener el valor de CTDIvol de un archivo DICOM
 def get_ctdi_vol_from_dicom(dicom_file_path):
     try:
+        # Lee el archivo DICOM en la ruta especificada
         dataset = pydicom.dcmread(dicom_file_path)
+        
+        # Obtiene el valor de CTDIvol del archivo DICOM (si existe)
         ctdi_vol = dataset.get("CTDIvol", None)
         return ctdi_vol
     except Exception as e:
-        print(f"Error al llegir l'arxiu {dicom_file_path}: {e}")
+        # Maneja cualquier error que pueda ocurrir al leer el archivo DICOM
+        print(f"Error al leer el archivo {dicom_file_path}: {e}")
         return None
 
 # Función para encontrar archivos DICOM en un directorio y sus subdirectorios
 def find_dicom_files(directory_path):
-    dicom_files = []
+    dicom_files = []  # Lista para almacenar las rutas de los archivos DICOM encontrados
     for root, dirs, files in os.walk(directory_path):
         for file in files:
-            if file.lower().endswith(".dcm"):
-                dicom_files.append(os.path.join(root, file))
+            if file.lower().endswith(".dcm"):  # Comprueba si el archivo tiene la extensión .dcm
+                dicom_files.append(os.path.join(root, file))  # Agrega la ruta del archivo a la lista
     return dicom_files
 
 if __name__ == "__main__":
-    # Rutas a los directorios principales de los archivos DICOM
-    directory_path1 = "C:/Users/Adrià López/Desktop/TC_PhilipsDescomprimit"
-    directory_path2 = "C:/Users/Adrià López/Desktop/Somatom.Force_Descomprimit/Anonims"
-    directory_path3 = "C:/Users/Adrià López/Desktop/Somatom.Go.Top_Descomprimit/Anonims"
+    # Definición de rutas a los directorios principales de los archivos DICOM
+    directory_path1 = "Ruta/Carpeta/Imagenes/Dicom/1"
+    directory_path2 = "Ruta/Carpeta/Imagenes/Dicom/2"
+    directory_path3 = "Ruta/Carpeta/Imagenes/Dicom/3"
     
     # Buscar archivos DICOM en cada directorio
     dicom_files1 = find_dicom_files(directory_path1)
@@ -58,17 +63,18 @@ if __name__ == "__main__":
         # Verificar que haya valores de CTDIvol en cada archivo
         if len(ctdi_vol_values_file1) > 0 and len(ctdi_vol_values_file2) > 0 and len(ctdi_vol_values_file3) > 0:
             # Etiquetas para los archivos en el gráfico
-            labels = ['Philips', 'Siemens_Force', 'Siemens_Go_Top']
+            labels = ['Philips', 'Siemens_Force', 'Siemens_Go_Top'] #Aqui van los nombres de los equipos a comparar, he dejado los que usé yo
             all_ctdi_vol_values = [ctdi_vol_values_file1, ctdi_vol_values_file2, ctdi_vol_values_file3]
             
-            # Crear un violin plot utilizando Seaborn
+            # Crear un gráfico de violín utilizando Seaborn
             seaborn.violinplot(data=all_ctdi_vol_values)
             plt.xticks(ticks=[0, 1, 2], labels=labels)
-            plt.xlabel('Equips')
+            plt.xlabel('Equipos')
             plt.ylabel('CTDIvol(mGy)')
-            plt.title('Comparació de CTDIvol entre Equips')
+            plt.title('Comparación de CTDIvol entre Equipos')
             plt.show()
         else:
-            print("Almenys un dels arxius no té valor de CTDIvol.")
+            print("Al menos uno de los archivos no tiene valor de CTDIvol.")
     else:
-        print("No s'han trobat arxius DICOM en els directoris principals.")
+        print("No se encontraron archivos DICOM en los directorios principales.")
+
